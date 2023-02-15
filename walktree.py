@@ -12,6 +12,7 @@ def walktree(top, callback, callback_params, father_hash=None):
         if S_ISDIR(mode):
             current_dir_hash = hashlib.new(callback_params["hash_type"])
             parsed_dirs, parsed_files, callback_counter = walktree(pathname, callback, callback_params, current_dir_hash) # It's a directory, recurse into it
+            total_callback_counter += callback_counter
             callback_counter = callback(pathname, current_dir_hash, **callback_params)
             total_dirs_parsed += 1 + parsed_dirs
             total_files_parsed += parsed_files
