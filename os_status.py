@@ -6,8 +6,8 @@ from pathlib import Path
 def get_status_dict(pathname, hash_type, dir_hash):
     os_file_stat = stat(pathname)
     os_status = {
-        'mode':os_file_stat.st_mode, 'uid':find_owner(pathname),
-        'gid':find_group(pathname), 'size':os_file_stat.st_size, 
+        'mode':os_file_stat.st_mode, 'uid':find_owner(pathname, os_file_stat),
+        'gid':find_group(pathname, os_file_stat), 'size':os_file_stat.st_size, 
         'mtime':os_file_stat.st_mtime_ns
     }
     
@@ -26,10 +26,16 @@ def get_status_dict(pathname, hash_type, dir_hash):
     os_status["path"] = path.abspath(pathname)
     return os_status
 
-def find_owner(path):
-    path = Path(path)
-    return f"{path.owner()}"
+def find_owner(path, file_stat):
+    try:
+        path = Path(path)
+        return f"{path.owner()}"
+    except Exception:
+        return file_stat.st_uid
 
-def find_group(path):
-    path = Path(path)
-    return f"{path.group()}"
+def find_group(path, file_stat):
+    try:
+        path = Path(path)
+        return f"{path.group()}"
+    except Exception:
+        return file_stat.st_gid
