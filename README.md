@@ -1,6 +1,6 @@
 # **System Integrity Verifier (SIV)**
 
-Diego Díaz Fonseca ([diazfonseca.diego@gmail.com](diazfonseca.diego@gmail.com))
+_Diego Díaz Fonseca (diazfonseca.diego@gmail.com)_
 
 ## 1 Introduction
 This repo contains the implementation for a system integrity verifier made with python 3.9. A System Integrity Verifier, or SVI for short, is a program that is designed to detect any errors or discrepancies in a computer system. It can detect any issues with the code, hardware, or data that may be present in the system. The System Integrity Verifier can also compare the results of the program to predetermined criteria in order to ensure that the program is functioning as expected. In addition, the System Integrity Verifier can monitor the system for any potential security risks or vulnerabilities. By using a System Integrity Verifier, organizations can ensure that their computer systems are functioning properly and are secure from potential threats.
@@ -34,6 +34,7 @@ This SIV can be used from the a BASH terminal where python is install. The testi
 * python-dateutil==2.8.2
 * pytz==2022.7.1
 * six==1.16.0
+
 All the packages listed above can be install with the package manager pip, also it is recommended to create a python virtual environment where to install the specified versions of the packages. 
 The command line interface for this program follows this format:
 ```
